@@ -5,6 +5,10 @@ function SimpleInput (props) {
     const [enteredNameTouched, setEnteredNameTouched] = useState(false);
 
     const enteredNameIsValid = enteredName.trim() !== '';
+    const nameInputIsInvalid = !enteredNameIsValid && enteredNameTouched;
+    const nameInputClasses = nameInputIsInvalid
+        ? 'form-control invalid'
+        : 'form-control';
 
     function nameInputChangeHandler (event) {
         setEnteredName(event.target.value);
@@ -26,11 +30,6 @@ function SimpleInput (props) {
         setEnteredName('');
         setEnteredNameTouched(false);
     }
-
-    const nameInputIsInvalid = !enteredNameIsValid && enteredNameTouched;
-    const nameInputClasses = nameInputIsInvalid
-        ? 'form-control invalid'
-        : 'form-control';
 
     return (
         <form onSubmit={formSubmissionHandler}>
