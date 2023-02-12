@@ -10,6 +10,11 @@ function SimpleInput (props) {
         ? 'form-control invalid'
         : 'form-control';
 
+    let formIsValid = false;
+    if (enteredNameIsValid) {
+        formIsValid = true;
+    }
+
     function nameInputChangeHandler (event) {
         setEnteredName(event.target.value);
     };
