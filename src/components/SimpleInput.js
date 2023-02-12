@@ -2,8 +2,9 @@ import { useState } from 'react';
 
 function SimpleInput (props) {
     const [enteredName, setEnteredName] = useState('');
-    const [enteredNameIsValid, setEnteredNameIsValid] = useState(true);
     const [enteredNameTouched, setEnteredNameTouched] = useState(false);
+
+    const enteredNameIsValid = enteredName.trim() !== '';
 
     function nameInputChangeHandler (event) {
         setEnteredName(event.target.value);
@@ -11,10 +12,6 @@ function SimpleInput (props) {
 
     const nameInputBlurHandler = event => {
         setEnteredNameTouched(true);
-
-        if (enteredName.trim() === '') {
-            return setEnteredNameIsValid(false);
-        }
     };
 
     function formSubmissionHandler (event) {
@@ -22,11 +19,8 @@ function SimpleInput (props) {
 
         setEnteredNameTouched(true);
 
-        if(enteredName.trim() === '') {
-            return setEnteredNameIsValid(false)
-        }
+        if (!enteredNameIsValid) {return;}
 
-        setEnteredNameIsValid(true)
         console.log(enteredName);
 
         setEnteredName('');
