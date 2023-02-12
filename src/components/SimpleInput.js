@@ -24,7 +24,8 @@ function SimpleInput (props) {
         console.log(enteredName);
 
         setEnteredName('');
-    };
+        setEnteredNameTouched(false);
+    }
 
     const nameInputIsInvalid = !enteredNameIsValid && enteredNameTouched;
     const nameInputClasses = nameInputIsInvalid
